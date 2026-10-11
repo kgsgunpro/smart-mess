@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f2" />
+    <title>Smart Mess | Turnout Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/dashboard" aria-label="Smart Mess dashboard">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>smart<span class="brand-light">mess</span></span>
+        </a>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="/dashboard" aria-current="page">Dashboard</a>
+          <a class="nav-link" href="/">Prediction</a>
+        </nav>
+        <div class="topbar-meta"><span class="live-indicator" aria-hidden="true"></span>Campus dining</div>
+      </header>
+
+      <main class="dashboard">
+        <section class="page-heading">
+          <div>
+            <p class="eyebrow">OPERATIONS / MEAL PLANNING</p>
+            <h1>Turnout overview</h1>
+            <p class="page-subtitle">Daily meal demand, by day of the week.</p>
+          </div>
+          <div class="period-chip"><span class="period-dot" aria-hidden="true"></span><span id="period-label">Loading CSV data</span></div>
+        </section>
+
+        <section class="chart-panel" aria-labelledby="chart-title">
+          <div class="chart-heading">
+            <div>
+              <p class="eyebrow">WEEKLY PROFILE</p>
+              <h2 id="chart-title">Average turnout by day</h2>
+              <p class="section-subtitle">Meal averages · average total servings labeled above each day</p>
+            </div>
+            <div class="chart-summary"><span class="summary-label">Records included</span><strong id="record-count">--</strong></div>
+          </div>
+          <div class="chart-legend" id="chart-legend" aria-label="Toggle meal series"></div>
+          <div class="chart-frame">
+            <svg id="turnout-chart" viewBox="0 0 960 360" role="img" aria-label="Average meal turnout by weekday"></svg>
+            <div id="chart-tooltip" class="chart-tooltip" role="tooltip" hidden></div>
+          </div>
+          <p class="data-note" id="data-note" role="status"></p>
+        </section>
+
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

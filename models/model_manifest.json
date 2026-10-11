@@ -1,0 +1,34 @@
+{
+  "dataset": "day_of_week,is_weekend,is_holiday,is_lon.csv",
+  "sha256": "77df2078e50cc3faf3b2f027fc9802e1d1acff58814a7c8eed3e02fc820419d1",
+  "features": [
+    "day_of_week",
+    "is_weekend",
+    "is_holiday",
+    "is_long_weekend",
+    "has_classes",
+    "is_exam_period",
+    "is_semester_break"
+  ],
+  "categorical_features": [
+    "day_of_week"
+  ],
+  "metrics": {
+    "breakfast_count": {
+      "mae": 27.37,
+      "test_rows": 36
+    },
+    "lunch_count": {
+      "mae": 24.8,
+      "test_rows": 36
+    },
+    "snacks_count": {
+      "mae": 34.48,
+      "test_rows": 36
+    },
+    "dinner_count": {
+      "mae": 31.32,
+      "test_rows": 36
+    }
+  }
+}

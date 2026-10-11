@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f2" />
+    <title>Smart Mess | Meal Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Smart Mess prediction">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>smart<span class="brand-light">mess</span></span>
+        </a>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link active" href="/" aria-current="page">Prediction</a>
+        </nav>
+        <div class="topbar-meta"><span class="live-indicator" aria-hidden="true"></span>Campus dining</div>
+      </header>
+
+      <main class="dashboard prediction-page">
+        <section class="page-heading">
+          <div>
+            <p class="eyebrow">OPERATIONS / MEAL PLANNING</p>
+            <h1>Predict meal turnout</h1>
+            <p class="page-subtitle">Estimate servings for a day using the campus schedule.</p>
+          </div>
+        </section>
+
+        <div class="lower-grid prediction-layout">
+          <section class="tool-panel" aria-labelledby="prediction-title">
+            <div class="panel-heading">
+              <div><p class="eyebrow">DAILY CONDITIONS</p><h2 id="prediction-title">Plan a day</h2></div>
+            </div>
+            <form id="prediction-form">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="day_of_week">Day</label>
+                  <select id="day_of_week" name="day_of_week">
+                    <option value="Monday">Monday</option><option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option><option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="is_holiday">Official holiday</label>
+                  <select id="is_holiday" name="is_holiday"><option value="0">No</option><option value="1">Yes</option></select>
+                </div>
+                <div class="field">
+                  <label for="is_long_weekend">Long weekend</label>
+                  <select id="is_long_weekend" name="is_long_weekend"><option value="0">No</option><option value="1">Yes</option></select>
+                </div>
+                <div class="field">
+                  <label for="is_exam_period">Exam period</label>
+                  <select id="is_exam_period" name="is_exam_period"><option value="0">No</option><option value="1">Yes</option></select>
+                </div>
+                <div class="field">
+                  <label for="is_semester_break">Semester break</label>
+                  <select id="is_semester_break" name="is_semester_break"><option value="0">No</option><option value="1">Yes</option></select>
+                </div>
+              </div>
+              <button type="submit" id="predict-button"><span>Predict turnout</span><span class="button-arrow" aria-hidden="true">&#8594;</span></button>
+            </form>
+          </section>
+
+          <section class="tool-panel prediction-panel" aria-labelledby="results-title">
+            <div class="panel-heading">
+              <div><p class="eyebrow">ESTIMATE</p><h2 id="results-title">Predicted servings</h2></div>
+              <span class="result-day" id="result-day">Select a day</span>
+            </div>
+            <div class="meal-results" id="results" aria-live="polite">
+              <div class="meal-row"><span class="meal-name"><i class="meal-dot breakfast"></i>Breakfast</span><strong id="breakfast_value">--</strong></div>
+              <div class="meal-row"><span class="meal-name"><i class="meal-dot lunch"></i>Lunch</span><strong id="lunch_value">--</strong></div>
+              <div class="meal-row"><span class="meal-name"><i class="meal-dot snacks"></i>Snacks</span><strong id="snacks_value">--</strong></div>
+              <div class="meal-row"><span class="meal-name"><i class="meal-dot dinner"></i>Dinner</span><strong id="dinner_value">--</strong></div>
+              <div class="meal-total"><span>Total meal servings</span><strong id="total_value">--</strong></div>
+            </div>
+            <div id="error-message" class="error-message" role="alert" hidden></div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
